@@ -38,23 +38,17 @@
   <source src="https://math.seattleacademy.org/garyanderson/snd/smack.wav">
 </audio>
 
-<audio controls id="ugh">
-  <source src="https://math.seattleacademy.org/garyanderson/snd/ugh.wav">
-</audio>
-
 <div>
   Bot Count: <span id="botCount">0</span> Deaths: <span id="deaths">0</span> time: <span id="theTime">0</span>
   <button id="resetBots">Reset Bots</button>
 </div>
 <canvas id="myCanvas" width="600" height="300"></canvas>
-
-<img id="pacman" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Pac_Man.svg/1200px-Pac_Man.svg.png"/>
+<img src="#"/>
   
   
       <script id="rendered-js" >
 console.clear();
 
-const ughsnd = document.getElementById("ugh");
 const smacksnd = document.getElementById("smack");
 
 let timer = 0;
@@ -97,8 +91,6 @@ function drawBot(bot) {
   if (bot.r == bots[0].r) {
     ctx.fillStyle = "rgba(255,0,0,.5)";
     ctx.fill();
-    var img = document.getElementById("pacman");
-  ctx.drawImage(img, bots[0].x-bots[0].r, bots[0].y-bots[0].r,2*bots[0].r,2*bots[0].r);
   }
 }
 
@@ -111,19 +103,15 @@ function moveBot(bot) {
   bot.y = bot.y - bot.dy;
   if (bot.y - bot.r < 0) {
     bot.dy = -bot.dy;
-    ughsnd.play();
   }
   if (bot.x + bot.r >= c.width) {
     bot.dx = -bot.dx;
-    ughsnd.play();
   }
   if (bot.y + bot.r >= c.height) {
     bot.dy = -bot.dy;
-    ughsnd.play();
   }
   if (bot.x - bot.r <= 0) {
     bot.dx = -bot.dx;
-    ughsnd.play();
   }
   bot.theta = Math.atan2(bot.dy, bot.dx);
 
@@ -196,8 +184,6 @@ function dokeydown(e) {
 document.addEventListener("keydown", dokeydown);
 
 document.getElementById("resetBots").addEventListener("click", doResetBots);
-
-//https://owenmcgann.github.io/2126-5-Owen-M/snd/ugh.wav// Need to make this another sound when bots colide
     </script>
 
   
